@@ -1,9 +1,5 @@
 package class01;
 
-import com.sun.org.apache.bcel.internal.generic.SWAP;
-
-import java.util.jar.JarEntry;
-
 /**
  * @className: Code03
  * @description: 选择排序
