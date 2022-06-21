@@ -1,4 +1,4 @@
-package class01;
+package class02;
 
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @date: 2022/6/19 3:44
  * @version: 1.0
  */
-public class Code06 {
+public class Code01_PreSum {
 
     public static class RangeSum2{
 
