@@ -1,6 +1,5 @@
 package class02;
 
-import class01.Code03;
 
 /**
  * @className: Code_Comp
