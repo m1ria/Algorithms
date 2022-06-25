@@ -17,9 +17,9 @@ public class Code03_BSNearRight {
         int L = 0;
         int R = arr.length - 1;
         int ans = -1;//当查找不到时 直接返回-1错误
-        while ( R>= L) {
+        while ( L <= R) {
             int mid = (L + R) / 2;
-            if (arr[mid] >= num) {
+            if (arr[mid] <= num) {
                 ans = mid;
                 R = mid - 1;
             } else {
