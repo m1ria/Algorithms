@@ -2,10 +2,11 @@ package class04;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * @className: Code02_LinkedListToQueueAndStack
- * @description: TODO
+ * @description: 单链表结构实现队列和栈
  * @author: m1ria
  * @date: 2022/6/27 23:23
  * @version: 1.0
@@ -73,6 +74,47 @@ public class Code02_LinkedListToQueueAndStack {
         }
     }
 
+    public static class MyStack<V>{
+        private Node<V> head;
+        private int size;
+
+        public MyStack() {
+            head = null;
+            size = 0;
+        }
+        public int size() {
+            return size;
+        }
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+        public void push(V value) {
+            Node<V> cur = new Node<>(value);
+            if (head == null) {
+                head = cur;
+            } else {
+                cur.next = head;
+                head = cur;
+            }
+            size++;
+        }
+
+        public V pop() {
+            V ans = null;
+            if (head != null) {
+                ans = head.value;
+                head = head.next;
+                size--;
+            }
+            return ans;
+        }
+
+        public V peek() {
+            return head != null ? head.value : null;
+        }
+    }
+
     public static void testQueue() {
         MyQueue<Integer> myQueue = new MyQueue<>();
         Queue<Integer> test = new LinkedList<>();
@@ -122,7 +164,57 @@ public class Code02_LinkedListToQueueAndStack {
         System.out.println("test end------------");
     }
 
+    public static void testStack() {
+        MyStack<Integer> myStack = new MyStack<>();
+        Stack<Integer> test = new Stack<>();
+        int testTime = 50000;
+        int maxValue = 10000;
+        System.out.println("test start----------");
+        for (int i = 0; i < testTime; i++) {
+            if (myStack.isEmpty() != test.isEmpty()) {
+                System.out.println("empty ERROR----------");
+            }
+            if (myStack.size() != test.size()) {
+                System.out.println("size ERROR----------");
+            }
+            double decide = Math.random();
+            if (decide < 0.33) {
+                int num = (int) (Math.random() * maxValue);
+                myStack.push(num);
+                test.push(num);
+            } else if (decide < 0.66) {
+                if (!myStack.isEmpty()) {
+                    int num1 = myStack.pop();
+                    int num2 = test.pop();
+                    if (num1 != num2) {
+                        System.out.println("Error----------");
+                    }
+                }
+            } else {
+                if (!myStack.isEmpty()) {
+                    int num1 = myStack.peek();
+                    int num2 = test.peek();
+                    if (num1 != num2) {
+                        System.out.println("Error----------");
+                    }
+                }
+            }
+        }
+        if (myStack.size() != test.size()) {
+            System.out.println("ERROR----------");
+        }
+        while (!myStack.isEmpty()) {
+            int num1 = myStack.pop();
+            int num2 = test.pop();
+            if (num1 != num2) {
+                System.out.println("Error----------");
+            }
+        }
+        System.out.println("test end------------");
+    }
+
     public static void main(String[] args) {
         testQueue();
+        testStack();
     }
 }
