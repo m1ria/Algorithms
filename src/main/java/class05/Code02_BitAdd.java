@@ -11,7 +11,7 @@ public class Code02_BitAdd {
 
     public static int add(int a, int b) {
         int sum = a;
-        while (b != a) {
+        while (b != 0) {
             sum = a ^ b;
             b = (a & b) << 1;
             a = sum;
@@ -74,8 +74,12 @@ public class Code02_BitAdd {
     }
 
     public static void main(String[] args) {
-        int a = 7;
-        int b = -2;
+        int a = 15;
+        int b = 2;
+        System.out.println(add(a,b));
         System.out.println(multi(a,b));
+        System.out.println(divide(a,b));
+        int c = Integer.MIN_VALUE;
+        System.out.println(-c);
     }
 }
