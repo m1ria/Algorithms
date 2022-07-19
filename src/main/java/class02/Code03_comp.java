@@ -8,7 +8,7 @@ package class02;
  * @date: 2022/6/22 2:37
  * @version: 1.0
  */
-public class Code_Comp {
+public class Code03_comp {
     public static void selectSort(int[] arr) {
 
         if (arr == null || arr.length < 2) {
